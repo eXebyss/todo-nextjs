@@ -20,9 +20,9 @@ It is pretty simple:
 
 ## Local installation 💽
 
-First, clone the repo.
+First, clone the repo:
 
-<i>'Provide a link'</i>
+[https://github.com/eXebyss/todo-nextjs](https://github.com/eXebyss/todo-nextjs)
 
 Second, install necessary dependencies by running a command:
 
@@ -50,15 +50,15 @@ This project uses [Next.js](https://nextjs.org/) `app` router api.
 
 ## Authors 🧑‍💻
 
-See: [AUTHORS](./AUTHORS)
+See: [AUTHORS](https://github.com/eXebyss/todo-nextjs/blob/master/AUTHORS)
 
 ## Code owners 👑
 
-See: [CODEOWNERS](./CODEOWNERS)
+See: [CODEOWNERS](https://github.com/eXebyss/todo-nextjs/blob/master/CODEOWNERS)
 
 ## License ⚖️
 
-See: [LICENSE](./LICENSE)
+See: [LICENSE](https://github.com/eXebyss/todo-nextjs/blob/master/LICENSE)
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
@@ -70,4 +70,4 @@ See: [LICENSE](./LICENSE)
 
 ## Changes 📃
 
-See: [CHANGELOG](./CHANGELOG.md)
+See: [CHANGELOG](https://github.com/eXebyss/todo-nextjs/blob/master/CHANGELOG.md)
