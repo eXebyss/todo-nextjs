@@ -1,8 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# "TODO app" 📝
 
-## Getting Started
+This is a personal example project of TODO app created with [Next.js](https://nextjs.org/).
 
-First, run the development server:
+## Usage ⚠️
+
+It is pretty simple:
+
+1. Internet connection is required. <b>Offline mode is not supported.</b>
+1. Create a new collection or enter ID of already existing.
+1. Be aware. Nothing is stored locally forever! Collection is saved in DB and it is safe. Be sure to copy-paste collection ID somewhere, so you can easily access it anytime.
+1. If you forgot to copy-paste collection and application is reset, than the only one way to get your collection ID is to check your browser history. If history is cleared, than access to your collection is lost forever.
+1. When collection is created, create a new todo list by simply giving it a name.
+1. Input a text and wait for 2 seconds. Every new input is submitted after 2 sec of idle.
+1. When new todo list created, you are good to go with adding new TODOs.
+
+## Data 🗃️
+
+<b>Nothing is tracked!</b> No data about you is collected! 🕵️
+
+## Local installation 💽
+
+First, clone the repo.
+
+<i>'Provide a link'</i>
+
+Second, install necessary dependencies by running a command:
+
+```bash
+npm i
+# or
+yarn i
+# or
+pnpm i
+```
+
+Third, run the development server:
 
 ```bash
 npm run dev
@@ -12,23 +44,30 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application running.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project uses [Next.js](https://nextjs.org/) `app` router api.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Authors 🧑‍💻
 
-## Learn More
+See: [AUTHORS](./AUTHORS)
 
-To learn more about Next.js, take a look at the following resources:
+## Code owners 👑
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+See: [CODEOWNERS](./CODEOWNERS)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License ⚖️
 
-## Deploy on Vercel
+See: [LICENSE](./LICENSE)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Links 🔗
+
+-   [Github](https://github.com/eXebyss)
+-   [LinkedIn](https://www.linkedin.com/in/mihails-fjodorovs-361a0a182/)
+-   [Website](https://www.mihailsfjodorovs.com/)
+
+## Changes 📃
+
+See: [CHANGELOG](./CHANGELOG.md)
