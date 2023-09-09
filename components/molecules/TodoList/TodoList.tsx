@@ -89,7 +89,9 @@ const TodoList = ({
 							)}
 						</div>
 					) : (
-						<p>Todo list is not found!</p>
+						<p className="my-4 text-warning">
+							Todo list is not found!
+						</p>
 					)}
 
 					<div className="h-16 flex justify-center">
@@ -158,7 +160,7 @@ const TodoList = ({
 					)}
 				</div>
 			) : (
-				<p>Todo list is not found!</p>
+				<p className="my-4 text-warning">Todo list is not found!</p>
 			)}
 
 			<div className="h-16 flex justify-center">

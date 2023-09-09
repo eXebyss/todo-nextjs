@@ -39,7 +39,7 @@ const Navbar = ({
 
 			<div className="flex gap-x-4 justify-evenly">
 				<button
-					className="btn btn-primary"
+					className="btn"
 					type="button"
 					title="Copy"
 					onClick={copyToClipboard}
@@ -55,7 +55,7 @@ const Navbar = ({
 					<RefreshIcon />
 				</button>
 				<button
-					className="btn btn-secondary"
+					className="btn"
 					type="button"
 					title="Delete"
 					onClick={deleteCollectionId}

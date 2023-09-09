@@ -41,7 +41,7 @@ const Todo = ({ todoCollectionId, currentTodoListId }: ITodoProps) => {
 			: null;
 
 	return (
-		<div className="hero min-h-[50vh] lg:min-h-0 lg:h-fit lg:bg-base-200 w-full p-4 my-8 rounded-2xl shadow-lg text-center lg:col-start-1 lg:row-start-1">
+		<div className="hero min-h-[50vh] lg:min-h-0 lg:h-fit lg:bg-base-200 w-full p-4 my-8 rounded-2xl lg:shadow-lg text-center lg:col-start-1 lg:row-start-1">
 			<div className="text-center w-full lg:px-12">
 				<h3 className="text-3xl font-bold">TODO: </h3>
 				<div className="grid justify-items-center my-4 gap-y-4">

@@ -22,7 +22,7 @@ const CollectionData = ({
 		setCurrentCollectionData,
 	} = useCollectionData(collectionData);
 
-	if (currentCollectionData) {
+	if (!!currentCollectionData?.todoCollection) {
 		return (
 			<main className="lg:max-w-7xl w-11/12 mx-auto lg:min-h-[80vh]">
 				<Navbar
@@ -56,7 +56,9 @@ const CollectionData = ({
 
 	return (
 		<main>
-			<h1>Nothing is found!</h1>
+			<h1 className="w-full mx-auto my-8 text-warning text-center">
+				Nothing is found! 🤷
+			</h1>
 		</main>
 	);
 };

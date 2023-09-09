@@ -5,7 +5,7 @@ const TodoCheck = () => {
 	const { isLoading, handleIsTodoCollectionExisting } = useTodoContext();
 
 	return (
-		<div className="hero min-h-[50vh] bg-base-200 w-11/12 mx-auto my-8 rounded-2xl shadow-lg text-center">
+		<div className="hero min-h-[50vh] w-11/12 mx-auto my-8 rounded-2xl text-center">
 			<div className="hero-content">
 				<div className="max-w-3xl">
 					<h1 className="text-2xl lg:text-5xl font-bold">
@@ -18,7 +18,7 @@ const TodoCheck = () => {
 								onClick={() =>
 									handleIsTodoCollectionExisting(true)
 								}
-								className="btn btn-primary w-fit"
+								className="btn lg:btn-ghost"
 							>
 								Yes
 							</button>
@@ -33,7 +33,7 @@ const TodoCheck = () => {
 									onClick={() =>
 										handleIsTodoCollectionExisting(false)
 									}
-									className="btn btn-secondary w-fit"
+									className="btn lg:btn-ghost"
 								>
 									No
 								</button>
