@@ -2,6 +2,12 @@
 
 _Changelog created using the [Simple Changelog](https://marketplace.visualstudio.com/items?itemName=tobiaswaelde.vscode-simple-changelog) extension for VS Code._
 
+## [1.2.1] - 2023-09-10
+
+### Changed
+
+-   Ninja patch.
+
 ## [1.2.0] - 2023-09-10
 
 ### Added

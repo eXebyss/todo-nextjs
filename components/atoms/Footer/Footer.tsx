@@ -64,8 +64,7 @@ const Footer = () => {
 			<aside>
 				<p>
 					Copyright © {new Date().getFullYear()} - All right reserved
-					by <b className="text-primary">Mihails Fjodorovs</b>. v
-					{appVersion}
+					by <b>Mihails Fjodorovs</b>. v{appVersion}
 				</p>
 			</aside>
 		</footer>
