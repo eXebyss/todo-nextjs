@@ -21,6 +21,11 @@ export default function RootLayout({
 		<html lang="en">
 			<head>
 				<link
+					rel="canonical"
+					href="https://todo-nextjs-rose.vercel.app/"
+					key="canonical"
+				/>
+				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
 					href="/apple-touch-icon.png"
