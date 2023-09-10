@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
 	return {
 		name: 'Todo Next.js',
 		short_name: 'Todo',
-		description: 'A simple todo app built with NextJS and TailwindCSS',
+		description: 'A simple todo app built with NextJS and TailwindCSS.',
 		start_url: '/',
 		icons: [
 			{
