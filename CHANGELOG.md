@@ -2,6 +2,23 @@
 
 _Changelog created using the [Simple Changelog](https://marketplace.visualstudio.com/items?itemName=tobiaswaelde.vscode-simple-changelog) extension for VS Code._
 
+## [1.2.0] - 2023-09-10
+
+### Added
+
+-   Display app version in the footer.
+-   Add CRON Jobs.
+-   Add new API for CRON Jobs.
+
+### Changed
+
+-   Refactor svg and button styles.
+-   Tailwind CSS config is extended. New content paths are provided.
+
+### Fixed
+
+-   Redirect user to initial home page if no data was received for provided collection ID.
+
 ## [1.1.0] - 2023-09-09
 
 ### Added

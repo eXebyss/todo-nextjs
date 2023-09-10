@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTodoContext } from '@/context';
 import { ICollectionData } from '@/interfaces';

@@ -2,7 +2,6 @@ import { CopyIcon, RefreshIcon, TrashIcon } from '@/icons';
 import { InfoToast, SuccessToast } from '../Toast';
 import useNavbar from './useNavbar';
 import { ICollectionData } from '@/interfaces';
-import { set } from 'mongoose';
 
 interface INavbarProps {
 	currentCollectionData: ICollectionData;
@@ -39,7 +38,7 @@ const Navbar = ({
 
 			<div className="flex gap-x-4 justify-evenly">
 				<button
-					className="btn"
+					className="btn lg:btn-ghost"
 					type="button"
 					title="Copy"
 					onClick={copyToClipboard}
@@ -47,7 +46,7 @@ const Navbar = ({
 					<CopyIcon />
 				</button>
 				<button
-					className="btn"
+					className="btn lg:btn-ghost"
 					type="button"
 					title="Refresh"
 					onClick={refreshCollectionId}
@@ -55,7 +54,7 @@ const Navbar = ({
 					<RefreshIcon />
 				</button>
 				<button
-					className="btn"
+					className="btn lg:btn-ghost"
 					type="button"
 					title="Delete"
 					onClick={deleteCollectionId}
