@@ -1,11 +1,11 @@
 import { TodoContextProvider } from '@/context';
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import { Footer } from '@/components/atoms/Footer';
 import { Analytics } from '@vercel/analytics/react';
 
-const inter = Inter({ subsets: ['latin'] });
+const poppins = Poppins({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
 	title: 'TODO App NextJS',
@@ -18,7 +18,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
+		<html lang="en" className={poppins.className}>
 			<head>
 				<link
 					rel="canonical"
@@ -43,7 +43,7 @@ export default function RootLayout({
 					href="/favicon-16x16.png"
 				/>
 			</head>
-			<body className={inter.className}>
+			<body>
 				<TodoContextProvider>{children}</TodoContextProvider>
 				<Footer />
 				<Analytics />

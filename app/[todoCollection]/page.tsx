@@ -14,9 +14,13 @@ export default async function TodoCollection({
 
 		return <CollectionData collectionData={collectionData} />;
 	} catch (e) {
+		console.error(e);
+
 		return (
 			<main>
-				<p className="text-error">Error</p>
+				<p className="w-full my-4 text-center text-error">
+					Render Error!
+				</p>
 			</main>
 		);
 	}
