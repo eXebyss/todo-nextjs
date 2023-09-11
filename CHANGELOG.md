@@ -2,6 +2,12 @@
 
 _Changelog created using the [Simple Changelog](https://marketplace.visualstudio.com/items?itemName=tobiaswaelde.vscode-simple-changelog) extension for VS Code._
 
+## [1.4.0] - 2023-09-11
+
+### Added
+
+-   Add Buymeacoffee icon to the footer.
+
 ## [1.3.1] - 2023-09-11
 
 ### Changed
