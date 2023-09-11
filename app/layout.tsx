@@ -1,11 +1,22 @@
 import { TodoContextProvider } from '@/context';
 import './globals.css';
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { Poppins } from 'next/font/google';
-import { Footer } from '@/components/atoms/Footer';
 import { Analytics } from '@vercel/analytics/react';
 
 const poppins = Poppins({ subsets: ['latin'], weight: '400' });
+
+const Footer = dynamic(
+	() => import('@/components/atoms/Footer').then((module) => module.Footer),
+	{
+		loading: () => (
+			<p className="w-full mx-auto text-center text-warning">
+				Loading...
+			</p>
+		),
+	}
+);
 
 export const metadata: Metadata = {
 	title: 'TODO App NextJS',
