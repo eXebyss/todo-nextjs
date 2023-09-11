@@ -24,7 +24,7 @@ const CollectionData = ({
 
 	if (!!currentCollectionData?.todoCollection) {
 		return (
-			<main className="lg:max-w-7xl w-11/12 mx-auto lg:min-h-[80vh]">
+			<main className="lg:max-w-7xl w-11/12 mx-auto lg:min-h-screen">
 				<Navbar
 					currentCollectionData={currentCollectionData}
 					successMessage={successMessage}

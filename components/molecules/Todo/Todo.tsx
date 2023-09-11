@@ -24,6 +24,8 @@ const Todo = ({ todoCollectionId, currentTodoListId }: ITodoProps) => {
 		handleTodoItemInputOnBlur,
 	} = useTodo(currentTodoListId, todoCollectionId);
 
+	console.log(!!currentTodoListId);
+
 	const collectionListTodo =
 		todoListData && todoListData.length > 0
 			? todoListData?.map(
@@ -54,34 +56,38 @@ const Todo = ({ todoCollectionId, currentTodoListId }: ITodoProps) => {
 					)}
 					{todoListData?.length === 0 && <p>No todo items.</p>}
 					{todoListData?.todoCollection === null && (
-						<p>Select todo list.</p>
+						<p className="text-warning">Select todo list.</p>
 					)}
 					{todoListData?.message && (
 						<p className="text-error">{todoListData?.message}</p>
 					)}
 
-					<div className="h-16 flex justify-center">
-						{isTodoLoading ? (
-							<LoadingBar size={ELoadingBarSize.lg} />
-						) : !openNewTodoItemInput ? (
-							<button
-								title="Add new todo item"
-								className="btn btn-ghost m-2 w-52 p-0 border-dashed border-2 border-neutral-content"
-								type="button"
-								onClick={() => setOpenNewTodoItemInput(true)}
-							>
-								<PlusIcon />
-							</button>
-						) : (
-							<input
-								type="text"
-								className="input m-2 w-52 text-center"
-								placeholder="Type here..."
-								onChange={handleNewTodoItemOnChange}
-								onBlur={handleTodoItemInputOnBlur}
-							/>
-						)}
-					</div>
+					{!!currentTodoListId && (
+						<div className="h-16 flex justify-center">
+							{isTodoLoading ? (
+								<LoadingBar size={ELoadingBarSize.lg} />
+							) : !openNewTodoItemInput ? (
+								<button
+									title="Add new todo item"
+									className="btn btn-ghost m-2 w-52 p-0 border-dashed border-2 border-neutral-content"
+									type="button"
+									onClick={() =>
+										setOpenNewTodoItemInput(true)
+									}
+								>
+									<PlusIcon />
+								</button>
+							) : (
+								<input
+									type="text"
+									className="input m-2 w-52 text-center"
+									placeholder="Type here..."
+									onChange={handleNewTodoItemOnChange}
+									onBlur={handleTodoItemInputOnBlur}
+								/>
+							)}
+						</div>
+					)}
 				</div>
 			</div>
 			<div className="hero-content flex-col lg:flex-row-reverse gap-x-8"></div>

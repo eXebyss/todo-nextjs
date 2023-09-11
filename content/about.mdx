@@ -18,6 +18,18 @@ It is pretty simple:
 
 <b>Nothing is tracked!</b> No data about you is collected! 🕵️
 
+## Database 🗄️
+
+Current application is using [mongoDB](https://www.mongodb.com/) database.
+
+In order to run and use the application locally and successfully, you need:
+
+1. Register a new user in [mongoDB](https://www.mongodb.com/) or use already existing one.
+1. Create a new database. See more info: [manual](https://www.mongodb.com/basics/create-database).
+1. Setup connection setting for your created mongoDB database.
+1. Create or configure `.env` file under root directory.
+1. Provide connection value from mongoDB to `MONGODB_URI`.
+
 ## Local installation 💽
 
 First, clone the repo:
@@ -43,6 +55,12 @@ yarn dev
 # or
 pnpm dev
 ```
+
+Last, but not least:
+
+- Check `.env.example` file and use it to configure your `.env` file.
+
+Now you are ready to go!
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the application running.
 

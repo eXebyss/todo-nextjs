@@ -29,7 +29,9 @@ const InitialScreen = () => {
 		return <CreateTodoCollectionId />;
 	}
 
-	return <h1 className="text-error">Render Error!</h1>;
+	return (
+		<h1 className="w-full my-4 text-center text-error">Render Error!</h1>
+	);
 };
 
 export default InitialScreen;

@@ -2,6 +2,19 @@
 
 _Changelog created using the [Simple Changelog](https://marketplace.visualstudio.com/items?itemName=tobiaswaelde.vscode-simple-changelog) extension for VS Code._
 
+## [1.3.0] - 2023-09-11
+
+### Changed
+
+-   Change `font-family`.
+-   Tiny styles adjustments.
+-   Update `README.md`.
+-   Update `about.mdx`.
+
+### Fixed
+
+-   Add todo item button is disabled if no todo list is selected.
+
 ## [1.2.1] - 2023-09-10
 
 ### Changed
