@@ -2,10 +2,10 @@ import { TodoContextProvider } from '@/context';
 import './globals.css';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import { Poppins } from 'next/font/google';
+import { Rubik } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 
-const poppins = Poppins({ subsets: ['latin'], weight: '400' });
+const rubik = Rubik({ subsets: ['latin'], weight: '400' });
 
 const Footer = dynamic(
 	() => import('@/components/atoms/Footer').then((module) => module.Footer),
@@ -29,7 +29,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" className={poppins.className}>
+		<html lang="en" className={rubik.className}>
 			<head>
 				<link
 					rel="canonical"
