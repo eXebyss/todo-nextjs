@@ -52,18 +52,44 @@ const useTodo = (currentTodoListId: string, todoCollectionId: string) => {
 				setOpenNewTodoItemInput(false);
 
 				setIsTodoLoading(false);
-			}, 2000);
+			}, 1000);
 		}
 
 		return;
 	};
 
-	const handleTodoItemInputOnBlur = () => {
+	const handleTodoItemInputOnBlur = async (
+		e: ChangeEvent<HTMLInputElement>
+	) => {
+		const text = e.target.value;
+
 		if (timeoutIdRef.current) {
 			clearTimeout(timeoutIdRef.current);
 		}
 
-		setOpenNewTodoItemInput(false);
+		if (text.length > 0) {
+			timeoutIdRef.current = setTimeout(async () => {
+				setIsTodoLoading(true);
+
+				const createTodoItemResponse = await createNewTodoItem(
+					todoCollectionId,
+					currentTodoListId,
+					text
+				);
+
+				if (createTodoItemResponse) {
+					mutate(
+						`${baseUrl}/api/v1/todo-collection/${currentTodoListId}`
+					);
+				}
+
+				setOpenNewTodoItemInput(false);
+
+				setIsTodoLoading(false);
+			}, 0);
+		}
+
+		return;
 	};
 
 	return {

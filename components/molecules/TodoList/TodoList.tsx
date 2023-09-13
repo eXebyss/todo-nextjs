@@ -25,7 +25,7 @@ const TodoList = ({
 		openNewTodoListInput,
 		handleDeleteTodoList,
 		setOpenNewTodoListInput,
-		handleChancelNewTodoListInputOnBlur,
+		handleCancelNewTodoListInputOnBlur,
 		handleCreateNewTodoListOnChange,
 	} = useTodoList(
 		currentCollectionData,
@@ -112,7 +112,7 @@ const TodoList = ({
 								className="input m-2 w-52 text-center"
 								placeholder="Enter todo list title"
 								onChange={handleCreateNewTodoListOnChange}
-								onBlur={handleChancelNewTodoListInputOnBlur}
+								onBlur={handleCancelNewTodoListInputOnBlur}
 							/>
 						)}
 					</div>
@@ -181,7 +181,7 @@ const TodoList = ({
 						className="input m-2 w-52 text-center"
 						placeholder="Enter todo list title"
 						onChange={handleCreateNewTodoListOnChange}
-						onBlur={handleChancelNewTodoListInputOnBlur}
+						onBlur={handleCancelNewTodoListInputOnBlur}
 					/>
 				)}
 			</div>

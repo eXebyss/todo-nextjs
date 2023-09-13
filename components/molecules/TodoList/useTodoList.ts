@@ -84,7 +84,7 @@ const useTodoList = (
 				}
 
 				handleSetIsLoading(false);
-			}, 2000);
+			}, 1000);
 		}
 
 		return;
@@ -94,7 +94,7 @@ const useTodoList = (
 		setOpenNewTodoListInput(false);
 	};
 
-	const handleChancelNewTodoListInputOnBlur = () => {
+	const handleCancelNewTodoListInputOnBlur = () => {
 		if (timeoutIdRef.current) {
 			clearTimeout(timeoutIdRef.current);
 		}
@@ -124,7 +124,7 @@ const useTodoList = (
 		handleDeleteTodoList,
 		setOpenNewTodoListInput,
 		handleCreateNewTodoListOnChange,
-		handleChancelNewTodoListInputOnBlur,
+		handleCancelNewTodoListInputOnBlur,
 	};
 };
 
