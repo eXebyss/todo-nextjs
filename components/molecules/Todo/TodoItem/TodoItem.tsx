@@ -28,13 +28,7 @@ const TodoItem = ({
 	} = useTodoItem(id, text, done, todoCollectionId, currentTodoListId);
 
 	return (
-		<div
-			key={id}
-			// className={`grid ${
-			// 	!isChecked ? 'grid-cols-[1fr_5fr]' : 'grid-cols-[1fr_4fr_1fr]'
-			// } items-center`}
-			className="flex items-center"
-		>
+		<div key={id} className="flex items-center">
 			<input
 				title="Select"
 				type="checkbox"
@@ -46,7 +40,7 @@ const TodoItem = ({
 			{!isInputOpen ? (
 				<button
 					type="button"
-					className={`btn btn-ghost content-center normal-case break-all w-[80%] ${
+					className={`btn btn-ghost content-center normal-case break-all w-[75%] lg:w-[80%] mx-2 lg:mx-4 ${
 						isChecked ? 'line-through' : ''
 					}`}
 					onClick={() => setIsInputOpen(true)}

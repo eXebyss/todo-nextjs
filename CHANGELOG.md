@@ -2,6 +2,12 @@
 
 _Changelog created using the [Simple Changelog](https://marketplace.visualstudio.com/items?itemName=tobiaswaelde.vscode-simple-changelog) extension for VS Code._
 
+## [1.4.3] - 2023-09-17
+
+### Fixed
+
+-   Todo item done status is applied correctly now.
+
 ## [1.4.2] - 2023-09-17
 
 ### Changed

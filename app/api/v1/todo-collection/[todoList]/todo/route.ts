@@ -65,10 +65,13 @@ export async function PUT(req: NextRequest) {
 		);
 
 		todo.text = todoText || todo.text;
-		todo.done = todoDone || todo.done;
+		todo.done =
+			typeof todoDone !== 'undefined' || 'null' ? todoDone : todo.done;
 		todo.updatedAt = Date.now();
 		todoList.updatedAt = Date.now();
 		todoCollection.updatedAt = Date.now();
+
+		console.log(todo.done);
 
 		await todoCollection.save();
 

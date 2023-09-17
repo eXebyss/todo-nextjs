@@ -58,7 +58,7 @@ const TodoList = ({
 									>
 										<button
 											type="button"
-											className={`btn btn-ghost content-center normal-case break-all w-[80%] ${
+											className={`btn btn-ghost content-center normal-case break-all w-[80%] mx-2 ${
 												currentTodoListId ===
 												todoList.id
 													? 'text-primary'
@@ -134,7 +134,7 @@ const TodoList = ({
 							>
 								<button
 									type="button"
-									className={`btn btn-ghost content-center normal-case break-all ${
+									className={`btn btn-ghost content-center normal-case break-all mx-4 ${
 										currentTodoListId === todoList.id
 											? 'text-primary'
 											: ''
