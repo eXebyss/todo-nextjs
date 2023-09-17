@@ -54,11 +54,11 @@ const TodoList = ({
 								(todoList: ITodoList) => (
 									<div
 										key={todoList.id}
-										className="grid grid-cols-[3fr_1fr]"
+										className="flex items-center"
 									>
 										<button
 											type="button"
-											className={`btn btn-ghost content-center normal-case break-all ${
+											className={`btn btn-ghost content-center normal-case break-all w-[80%] ${
 												currentTodoListId ===
 												todoList.id
 													? 'text-primary'

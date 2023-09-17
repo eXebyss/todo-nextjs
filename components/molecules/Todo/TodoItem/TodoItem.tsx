@@ -30,9 +30,10 @@ const TodoItem = ({
 	return (
 		<div
 			key={id}
-			className={`grid ${
-				!isChecked ? 'grid-cols-[1fr_5fr]' : 'grid-cols-[1fr_4fr_1fr]'
-			} items-center`}
+			// className={`grid ${
+			// 	!isChecked ? 'grid-cols-[1fr_5fr]' : 'grid-cols-[1fr_4fr_1fr]'
+			// } items-center`}
+			className="flex items-center"
 		>
 			<input
 				title="Select"
@@ -45,7 +46,7 @@ const TodoItem = ({
 			{!isInputOpen ? (
 				<button
 					type="button"
-					className={`btn btn-ghost content-center normal-case break-all ${
+					className={`btn btn-ghost content-center normal-case break-all w-[80%] ${
 						isChecked ? 'line-through' : ''
 					}`}
 					onClick={() => setIsInputOpen(true)}
