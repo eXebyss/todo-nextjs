@@ -2,6 +2,14 @@
 
 *Changelog created using the [Simple Changelog](https://marketplace.visualstudio.com/items?itemName=tobiaswaelde.vscode-simple-changelog) extension for VS Code.*
 
+## [1.4.2] - 2023-09-17
+### Changed
+- Minor style improvements.
+
+### Removed
+- Client logs are removed.
+
+
 ## [1.4.1] - 2023-09-17
 ### Changed
 - Change `onBlur` actions.

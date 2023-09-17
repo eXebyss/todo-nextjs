@@ -58,7 +58,7 @@ const TodoList = ({
 									>
 										<button
 											type="button"
-											className={`btn btn-ghost content-center normal-case break-all h-fit ${
+											className={`btn btn-ghost content-center normal-case break-all ${
 												currentTodoListId ===
 												todoList.id
 													? 'text-primary'
@@ -122,10 +122,10 @@ const TodoList = ({
 	);
 
 	const desktopTodoList: JSX.Element = (
-		<div className="w-full my-8 text-center sticky top-0 shadow-lg lg:shadow-none lg:col-start-2 lg:row-start-1">
+		<div className="w-full my-8 text-center sticky top-0 shadow-lg lg:shadow-none lg:col-start-2 lg:row-start-1 lg:p-4">
 			<h3 className="text-3xl font-bold">TODO list: </h3>
 			{currentCollectionData?.todoCollection?.todoLists.length > 0 ? (
-				<div className="menu w-full rounded-box pb-0">
+				<div className="menu w-full rounded-box pb-0 lg:my-4">
 					{currentCollectionData?.todoCollection?.todoLists.map(
 						(todoList: ITodoList) => (
 							<div
@@ -134,7 +134,7 @@ const TodoList = ({
 							>
 								<button
 									type="button"
-									className={`btn btn-ghost content-center normal-case break-all h-fit ${
+									className={`btn btn-ghost content-center normal-case break-all ${
 										currentTodoListId === todoList.id
 											? 'text-primary'
 											: ''

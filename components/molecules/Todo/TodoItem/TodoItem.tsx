@@ -45,7 +45,7 @@ const TodoItem = ({
 			{!isInputOpen ? (
 				<button
 					type="button"
-					className={`btn btn-ghost content-center normal-case break-all h-fit ${
+					className={`btn btn-ghost content-center normal-case break-all ${
 						isChecked ? 'line-through' : ''
 					}`}
 					onClick={() => setIsInputOpen(true)}

@@ -24,8 +24,6 @@ const Todo = ({ todoCollectionId, currentTodoListId }: ITodoProps) => {
 		handleTodoItemInputOnBlur,
 	} = useTodo(currentTodoListId, todoCollectionId);
 
-	console.log(!!currentTodoListId);
-
 	const collectionListTodo =
 		todoListData && todoListData.length > 0
 			? todoListData?.map(
@@ -90,7 +88,6 @@ const Todo = ({ todoCollectionId, currentTodoListId }: ITodoProps) => {
 					)}
 				</div>
 			</div>
-			<div className="hero-content flex-col lg:flex-row-reverse gap-x-8"></div>
 		</div>
 	);
 };

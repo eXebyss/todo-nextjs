@@ -28,7 +28,7 @@ const Navbar = ({
 		);
 
 	return (
-		<nav className="navbar grid lg:flex gap-y-4 lg:gap-y-0 justify-center w-full mx-auto my-4 rounded-2xl shadow-lg text-center gap-x-4">
+		<nav className="navbar grid lg:flex gap-y-4 lg:gap-y-0 justify-center w-full mx-auto my-4 rounded-2xl shadow-lg text-center gap-x-4 p-4">
 			<h1 className="normal-case lg:text-xl block">
 				Collection ID:{' '}
 				<span className="font-bold">
