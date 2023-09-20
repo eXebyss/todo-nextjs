@@ -50,7 +50,7 @@ const TodoItem = ({
 			) : (
 				<input
 					type="text"
-					className="input my-2 lg:w-52"
+					className="input w-[75%] lg:w-[80%] mx-2 lg:mx-4"
 					placeholder="Enter new todo list title"
 					value={newTodoText}
 					onChange={handleUpdateTodoItemOnChange}
