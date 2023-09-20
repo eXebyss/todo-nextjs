@@ -1,8 +1,22 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useTodoContext } from '@/context';
 import { LoadingBar, ELoadingBarSize } from '@/components/atoms/Loading';
 
 const TodoCheck = () => {
 	const { isLoading, handleIsTodoCollectionExisting } = useTodoContext();
+
+	const router = useRouter();
+
+	useEffect(() => {
+		const currentTodoCollectionIdFromLocalStorage = localStorage.getItem(
+			'currentTodoCollectionId'
+		);
+
+		if (currentTodoCollectionIdFromLocalStorage) {
+			router.push(`/${currentTodoCollectionIdFromLocalStorage}`);
+		}
+	}, [router]);
 
 	return (
 		<div className="hero min-h-[50vh] w-11/12 mx-auto my-8 rounded-2xl text-center">
