@@ -2,6 +2,22 @@
 
 _Changelog created using the [Simple Changelog](https://marketplace.visualstudio.com/items?itemName=tobiaswaelde.vscode-simple-changelog) extension for VS Code._
 
+## [1.5.0] - 2023-09-20
+
+### Added
+
+-   Add `changelog` page.
+
+### Changed
+
+-   `README.md` is used for `about` page.
+
+## [1.4.4] - 2023-09-20
+
+### Fixed
+
+-   Fix infinite loop when todo collection does not exist.
+
 ## [1.4.3] - 2023-09-17
 
 ### Fixed
