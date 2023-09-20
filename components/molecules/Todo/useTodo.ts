@@ -1,7 +1,6 @@
 import { useState, useRef, ChangeEvent, useEffect } from 'react';
 import { createNewTodoItem } from '@/helpers';
 import useSWR, { mutate } from 'swr';
-import { useTodoContext } from '@/context';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
