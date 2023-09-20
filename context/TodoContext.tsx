@@ -198,14 +198,8 @@ export const TodoContextProvider: FC<ITodoContextProviderProps> = ({
 				'currentTodoCollectionId',
 				currentTodoCollectionId
 			);
-
-			if (pathname === '/') {
-				router.push(`/${currentTodoCollectionId}`);
-			}
 		}
-
-		return;
-	}, [router, state, pathname]);
+	}, [state]);
 
 	// * Runs only once when the component is mounted.
 	useEffect(() => {
@@ -218,12 +212,6 @@ export const TodoContextProvider: FC<ITodoContextProviderProps> = ({
 				type: 'SET_TODO_COLLECTION_ID',
 				payload: currentTodoCollectionId,
 			});
-
-			//check if current path is `/` then redirect to `/${currentTodoCollectionId}
-
-			if (pathname === '/') {
-				router.push(`/${currentTodoCollectionId}`);
-			}
 		} else {
 			dispatch({
 				type: 'IS_TODO_COLLECTION_EXISTING',

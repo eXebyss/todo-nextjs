@@ -1,12 +1,25 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { useTodoContext } from '@/context';
 
 const EnterTodoCollectionId = () => {
+	const router = useRouter();
+	const pathname = usePathname();
+
 	const [todoCollectionId, setTodoCollectionId] = useState('');
 	const { handleEnterTodoCollectionId, handleIsTodoCollectionExisting } =
 		useTodoContext();
+
+	const handleSubmitTodoId = () => {
+		handleEnterTodoCollectionId(todoCollectionId);
+
+		if (todoCollectionId && pathname === '/') {
+			console.log('4');
+			router.push(`/${todoCollectionId}`);
+		}
+	};
 
 	return (
 		<div className="hero min-h-[50vh] w-11/12 mx-auto my-8 rounded-2xl text-center">
@@ -24,9 +37,7 @@ const EnterTodoCollectionId = () => {
 						<button
 							type="button"
 							className="btn lg:btn-ghost"
-							onClick={() =>
-								handleEnterTodoCollectionId(todoCollectionId)
-							}
+							onClick={handleSubmitTodoId}
 						>
 							Submit
 						</button>

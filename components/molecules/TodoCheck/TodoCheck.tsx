@@ -9,7 +9,9 @@ const TodoCheck = () => {
 			<div className="hero-content">
 				<div className="max-w-3xl">
 					<h1 className="text-2xl lg:text-5xl font-bold">
-						Do you have any TODO collection ID?
+						Do you have any{' '}
+						<span className="text-secondary">TODO</span> collection{' '}
+						<span className="text-secondary">ID</span>?
 					</h1>
 					<div className="flex w-full mt-4">
 						<div className="grid h-20 flex-grow card rounded-box place-items-center">

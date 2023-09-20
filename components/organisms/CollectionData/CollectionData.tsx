@@ -5,6 +5,7 @@ import Todo from '@/components/molecules/Todo';
 import useCollectionData from './useCollectionData';
 import { ICollectionData } from '@/interfaces';
 import TodoList from '@/components/molecules/TodoList';
+import { ELoadingBarSize, LoadingBar } from '@/components/atoms/Loading';
 
 const CollectionData = ({
 	collectionData,
@@ -16,6 +17,7 @@ const CollectionData = ({
 		successMessage,
 		infoMessage,
 		currentTodoListId,
+		isLoading,
 		setCurrentTodoListId,
 		setSuccessMessage,
 		setInfoMessage,
@@ -59,6 +61,11 @@ const CollectionData = ({
 			<h1 className="w-full mx-auto my-8 text-warning text-center">
 				Nothing is found! 🤷
 			</h1>
+			{isLoading && (
+				<div className="w-full flex justify-center my-8">
+					<LoadingBar size={ELoadingBarSize.lg} />
+				</div>
+			)}
 		</main>
 	);
 };
