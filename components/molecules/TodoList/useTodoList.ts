@@ -11,15 +11,15 @@ import {
 	deleteTodoList,
 	getCollectionData,
 } from '@/helpers';
-import { ICollectionData } from '@/interfaces';
+import { ITodoCollection } from '@/interfaces';
 import { useTodoContext } from '@/context';
 
 const useTodoList = (
-	currentCollectionData: ICollectionData,
+	currentCollectionData: ITodoCollection,
 	currentTodoListId: string,
 	setCurrentTodoListId: (id: string) => void,
 	setSuccessMessage: (message: string) => void,
-	setCurrentCollectionData: Dispatch<SetStateAction<ICollectionData>>
+	setCurrentCollectionData: Dispatch<SetStateAction<ITodoCollection>>
 ) => {
 	const [openNewTodoListInput, setOpenNewTodoListInput] =
 		useState<boolean>(false);
@@ -38,17 +38,15 @@ const useTodoList = (
 				setCurrentTodoListId(storedTodoListId);
 			}
 
-			if (currentCollectionData?.todoCollection?.todoLists[0]?.id) {
-				setCurrentTodoListId(
-					currentCollectionData?.todoCollection?.todoLists[0]?.id
-				);
+			if (currentCollectionData?.todoLists[0]?.id) {
+				setCurrentTodoListId(currentCollectionData?.todoLists[0]?.id);
 
 				localStorage.setItem('currentTodoListId', currentTodoListId);
 			}
 		}
 	}, [
 		currentTodoListId,
-		currentCollectionData?.todoCollection?.todoLists,
+		currentCollectionData?.todoLists,
 		setCurrentTodoListId,
 	]);
 
@@ -66,7 +64,7 @@ const useTodoList = (
 				handleSetIsLoading(true);
 
 				const createListResponse = await createNewTodoList(
-					currentCollectionData?.todoCollection?.id,
+					currentCollectionData?.id,
 					text
 				);
 
@@ -75,7 +73,7 @@ const useTodoList = (
 					setOpenNewTodoListInput(false);
 
 					const getCollectionResponse = await getCollectionData(
-						currentCollectionData?.todoCollection?.id
+						currentCollectionData?.id
 					);
 
 					if (getCollectionResponse) {
@@ -109,7 +107,7 @@ const useTodoList = (
 			setSuccessMessage('List deleted');
 
 			const getCollectionResponse = await getCollectionData(
-				currentCollectionData?.todoCollection?.id
+				currentCollectionData?.id
 			);
 
 			if (getCollectionResponse) {

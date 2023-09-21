@@ -1,6 +1,5 @@
+import { getCollectionData } from '@/actions';
 import { CollectionData } from '@/components/organisms/CollectionData';
-import { getCollectionData } from '@/helpers';
-import { ICollectionData } from '@/interfaces';
 
 export default async function TodoCollection({
 	params,
@@ -8,11 +7,14 @@ export default async function TodoCollection({
 	params: { todoCollection: string };
 }) {
 	try {
-		const collectionData: ICollectionData = await getCollectionData(
-			params.todoCollection
-		);
+		const res = await getCollectionData(params.todoCollection);
+		const { message: collectionData, error } = res;
 
-		return <CollectionData collectionData={collectionData} />;
+		if (error) {
+			throw new Error(error);
+		}
+
+		return <CollectionData collectionData={JSON.parse(collectionData)} />;
 	} catch (e) {
 		console.error(e);
 

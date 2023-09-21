@@ -1,10 +1,10 @@
 import { CopyIcon, RefreshIcon, TrashIcon } from '@/icons';
 import { InfoToast, SuccessToast } from '../Toast';
 import useNavbar from './useNavbar';
-import { ICollectionData } from '@/interfaces';
+import { ITodoCollection } from '@/interfaces';
 
 interface INavbarProps {
-	currentCollectionData: ICollectionData;
+	currentCollectionData: ITodoCollection;
 	successMessage: string;
 	setSuccessMessage: (message: string) => void;
 	infoMessage: string;
@@ -32,7 +32,7 @@ const Navbar = ({
 			<h1 className="normal-case lg:text-xl block">
 				Collection ID:{' '}
 				<span className="font-bold">
-					{currentCollectionData?.todoCollection?.id}
+					{currentCollectionData?.id}
 				</span>
 			</h1>
 

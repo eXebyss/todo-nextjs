@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTodoContext } from '@/context';
-import { ICollectionData } from '@/interfaces';
+import { ITodoCollection } from '@/interfaces';
 
 const useNavbar = (
 	successMessage: string,
 	setSuccessMessage: (message: string) => void,
-	currentCollectionData: ICollectionData,
+	currentCollectionData: ITodoCollection,
 	infoMessage: string,
 	setInfoMessage: (message: string) => void
 ) => {
@@ -40,7 +40,7 @@ const useNavbar = (
 	const copyToClipboard = async () => {
 		try {
 			await navigator.clipboard.writeText(
-				currentCollectionData?.todoCollection?.id || ''
+				currentCollectionData?.id || ''
 			);
 			setInfoMessage('Copied to clipboard');
 		} catch (err) {

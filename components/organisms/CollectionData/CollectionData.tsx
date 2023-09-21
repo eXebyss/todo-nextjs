@@ -3,14 +3,14 @@
 import Navbar from '@/components/atoms/Navbar';
 import Todo from '@/components/molecules/Todo';
 import useCollectionData from './useCollectionData';
-import { ICollectionData } from '@/interfaces';
+import { ITodoCollection } from '@/interfaces';
 import TodoList from '@/components/molecules/TodoList';
 import { ELoadingBarSize, LoadingBar } from '@/components/atoms/Loading';
 
 const CollectionData = ({
 	collectionData,
 }: {
-	collectionData: ICollectionData;
+	collectionData: ITodoCollection;
 }) => {
 	const {
 		currentCollectionData,
@@ -24,7 +24,7 @@ const CollectionData = ({
 		setCurrentCollectionData,
 	} = useCollectionData(collectionData);
 
-	if (!!currentCollectionData?.todoCollection) {
+	if (!!currentCollectionData) {
 		return (
 			<main className="lg:max-w-7xl w-11/12 mx-auto lg:min-h-screen">
 				<Navbar
@@ -44,9 +44,7 @@ const CollectionData = ({
 						setCurrentCollectionData={setCurrentCollectionData}
 					/>
 					<Todo
-						todoCollectionId={
-							currentCollectionData?.todoCollection?.id
-						}
+						todoCollectionId={currentCollectionData?.id}
 						currentTodoListId={currentTodoListId}
 						setSuccessMessage={setSuccessMessage}
 						setCurrentCollectionData={setCurrentCollectionData}

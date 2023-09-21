@@ -1,5 +1,5 @@
 import { PlusIcon, TrashIcon } from '@/icons';
-import { ICollectionData, ITodoList } from '@/interfaces';
+import { ITodoCollection, ITodoList } from '@/interfaces';
 import useTodoList from './useTodoList';
 import { Dispatch, SetStateAction } from 'react';
 import { useTodoContext } from '@/context';
@@ -7,10 +7,10 @@ import { ELoadingBarSize, LoadingBar } from '@/components/atoms/Loading';
 import { useWindowSize } from '@/hooks';
 
 interface ITodoListProps {
-	currentCollectionData: ICollectionData;
+	currentCollectionData: ITodoCollection;
 	currentTodoListId: string;
 	setCurrentTodoListId: (id: string) => void;
-	setCurrentCollectionData: Dispatch<SetStateAction<ICollectionData>>;
+	setCurrentCollectionData: Dispatch<SetStateAction<ITodoCollection>>;
 	setSuccessMessage: (message: string) => void;
 }
 
@@ -47,10 +47,9 @@ const TodoList = ({
 					<h3 className="text-3xl font-bold">TODO list: </h3>
 				</div>
 				<div className="collapse-content mb-4">
-					{currentCollectionData?.todoCollection?.todoLists.length >
-					0 ? (
+					{currentCollectionData?.todoLists.length > 0 ? (
 						<div className="menu w-full rounded-box pb-0">
-							{currentCollectionData?.todoCollection?.todoLists.map(
+							{currentCollectionData?.todoLists.map(
 								(todoList: ITodoList) => (
 									<div
 										key={todoList.id}
@@ -124,9 +123,9 @@ const TodoList = ({
 	const desktopTodoList: JSX.Element = (
 		<div className="w-full my-8 text-center sticky top-0 shadow-lg lg:shadow-none lg:col-start-2 lg:row-start-1 lg:p-4">
 			<h3 className="text-3xl font-bold">TODO list: </h3>
-			{currentCollectionData?.todoCollection?.todoLists.length > 0 ? (
+			{currentCollectionData?.todoLists.length > 0 ? (
 				<div className="menu w-full rounded-box pb-0 lg:my-4">
-					{currentCollectionData?.todoCollection?.todoLists.map(
+					{currentCollectionData?.todoLists.map(
 						(todoList: ITodoList) => (
 							<div
 								key={todoList.id}

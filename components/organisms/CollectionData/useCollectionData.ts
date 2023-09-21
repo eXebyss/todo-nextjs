@@ -1,10 +1,10 @@
-import { ICollectionData } from '@/interfaces';
+import { ITodoCollection } from '@/interfaces';
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 
-const useCollectionData = (collectionData: ICollectionData) => {
+const useCollectionData = (collectionData: ITodoCollection) => {
 	const [currentCollectionData, setCurrentCollectionData] =
-		useState<ICollectionData>(collectionData);
+		useState<ITodoCollection>(collectionData);
 	const [currentTodoListId, setCurrentTodoListId] = useState<string>('');
 	const [successMessage, setSuccessMessage] = useState<string>('');
 	const [infoMessage, setInfoMessage] = useState<string>('');
@@ -26,26 +26,20 @@ const useCollectionData = (collectionData: ICollectionData) => {
 	}, [router]);
 
 	useEffect(() => {
-		if (!currentCollectionData?.todoCollection) {
+		if (!currentCollectionData) {
 			refreshCollectionId();
 		}
-	}, [currentCollectionData?.todoCollection, refreshCollectionId]);
+	}, [currentCollectionData, refreshCollectionId]);
 
 	useEffect(() => {
 		const currentCollectionDataFromLocalStorage = localStorage.getItem(
 			'currentTodoCollectionId'
 		);
 
-		if (
-			!currentCollectionDataFromLocalStorage &&
-			collectionData?.todoCollection?.id
-		) {
-			localStorage.setItem(
-				'currentTodoCollectionId',
-				collectionData.todoCollection.id
-			);
+		if (!currentCollectionDataFromLocalStorage && collectionData?.id) {
+			localStorage.setItem('currentTodoCollectionId', collectionData.id);
 		}
-	}, [collectionData?.todoCollection?.id]);
+	}, [collectionData?.id]);
 
 	return {
 		currentCollectionData,

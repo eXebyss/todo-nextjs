@@ -2,14 +2,14 @@ import { PlusIcon } from '@/icons';
 import { Dispatch, SetStateAction } from 'react';
 import TodoItem from './TodoItem';
 import useTodo from './useTodo';
-import { ICollectionData } from '@/interfaces';
+import { ITodoCollection } from '@/interfaces';
 import { ELoadingBarSize, LoadingBar } from '@/components/atoms/Loading';
 
 interface ITodoProps {
 	todoCollectionId: string;
 	currentTodoListId: string;
 	setSuccessMessage: Dispatch<SetStateAction<string>>;
-	setCurrentCollectionData: Dispatch<SetStateAction<ICollectionData>>;
+	setCurrentCollectionData: Dispatch<SetStateAction<ITodoCollection>>;
 }
 
 const Todo = ({ todoCollectionId, currentTodoListId }: ITodoProps) => {
