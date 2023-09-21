@@ -7,7 +7,7 @@ This is a personal example project of TODO app created with [Next.js](https://ne
 It is pretty simple:
 
 1. Internet connection is required. <b>Offline mode is not supported.</b>
-1. Create a new collection or enter ID of already existing.
+1. Create a new collection or enter ID of already existing one collection.
 1. Be aware. Nothing is stored locally forever! Collection is saved in DB and it is safe. Be sure to copy-paste collection ID somewhere, so you can easily access it anytime.
 1. If you forgot to copy-paste collection and application is reset, than the only one way to get your collection ID is to check your browser history. If history is cleared, than access to your collection is lost forever.
 1. When collection is created, create a new todo list by simply giving it a name.
@@ -89,3 +89,12 @@ See: [LICENSE](https://github.com/eXebyss/todo-nextjs/blob/master/LICENSE)
 ## Changes 📃
 
 See: [CHANGELOG](https://github.com/eXebyss/todo-nextjs/blob/master/CHANGELOG.md)
+
+## Stack ⚙️
+
+-   Next.js
+-   Tailwind CSS
+-   SWR
+-   MDX
+-   MongoDB
+-   Vercel

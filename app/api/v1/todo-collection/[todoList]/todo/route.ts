@@ -71,8 +71,6 @@ export async function PUT(req: NextRequest) {
 		todoList.updatedAt = Date.now();
 		todoCollection.updatedAt = Date.now();
 
-		console.log(todo.done);
-
 		await todoCollection.save();
 
 		return NextResponse.json({ message: 'TODO updated' }, { status: 200 });

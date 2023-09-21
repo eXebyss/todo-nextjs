@@ -10,5 +10,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			url: 'https://todo-nextjs-rose.vercel.app/about',
 			lastModified: new Date(),
 		},
+		{
+			url: 'https://todo-nextjs-rose.vercel.app/changelog',
+			lastModified: new Date(),
+		},
 	];
 }

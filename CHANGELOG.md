@@ -2,6 +2,11 @@
 
 *Changelog created using the [Simple Changelog](https://marketplace.visualstudio.com/items?itemName=tobiaswaelde.vscode-simple-changelog) extension for VS Code.*
 
+## [1.5.2] - 2023-09-21
+### Changed
+- Tiny improvements.
+
+
 ## [1.5.1] - 2023-09-20
 ### Changed
 - Style improvements.

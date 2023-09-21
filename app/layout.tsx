@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Rubik } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+import { EMetaTitle } from '@/enums';
 
 const rubik = Rubik({ subsets: ['latin'], weight: '400' });
 
@@ -19,7 +20,7 @@ const Footer = dynamic(
 );
 
 export const metadata: Metadata = {
-	title: 'TODO App NextJS',
+	title: EMetaTitle.default,
 	description: 'TODO App created with Next.js.',
 };
 
