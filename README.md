@@ -89,3 +89,12 @@ See: [LICENSE](https://github.com/eXebyss/todo-nextjs/blob/master/LICENSE)
 ## Changes 📃
 
 See: [CHANGELOG](https://github.com/eXebyss/todo-nextjs/blob/master/CHANGELOG.md)
+
+## Stack ⚙️
+
+- Next.js
+- Tailwind CSS
+- SWR
+- MDX
+- MongoDB
+- Vercel
