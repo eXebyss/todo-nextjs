@@ -16,7 +16,6 @@ const EnterTodoCollectionId = () => {
 		handleEnterTodoCollectionId(todoCollectionId);
 
 		if (todoCollectionId && pathname === '/') {
-			console.log('4');
 			router.push(`/${todoCollectionId}`);
 		}
 	};
