@@ -31,6 +31,22 @@ const useCollectionData = (collectionData: ICollectionData) => {
 		}
 	}, [currentCollectionData?.todoCollection, refreshCollectionId]);
 
+	useEffect(() => {
+		const currentCollectionDataFromLocalStorage = localStorage.getItem(
+			'currentTodoCollectionId'
+		);
+
+		if (
+			!currentCollectionDataFromLocalStorage &&
+			collectionData?.todoCollection?.id
+		) {
+			localStorage.setItem(
+				'currentTodoCollectionId',
+				collectionData.todoCollection.id
+			);
+		}
+	}, [collectionData?.todoCollection?.id]);
+
 	return {
 		currentCollectionData,
 		successMessage,
