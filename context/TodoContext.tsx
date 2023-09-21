@@ -189,18 +189,6 @@ export const TodoContextProvider: FC<ITodoContextProviderProps> = ({
 		});
 	}, []);
 
-	// * Runs only when the currentTodoCollectionId changes.
-	useEffect(() => {
-		const { currentTodoCollectionId } = state;
-
-		if (currentTodoCollectionId) {
-			localStorage.setItem(
-				'currentTodoCollectionId',
-				currentTodoCollectionId
-			);
-		}
-	}, [state]);
-
 	// * Runs only once when the component is mounted.
 	useEffect(() => {
 		const currentTodoCollectionId = localStorage.getItem(
