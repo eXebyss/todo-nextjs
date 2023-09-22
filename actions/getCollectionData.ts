@@ -17,7 +17,7 @@ export default async function getCollectionData(todoCollectionId: string) {
 	} catch (e) {
 		console.error(e);
 		return {
-			message: 'Error Getting TODO Collection',
+			message: 'Error Getting TODO Collection.',
 			error: `Error: ${e}`,
 		};
 	}

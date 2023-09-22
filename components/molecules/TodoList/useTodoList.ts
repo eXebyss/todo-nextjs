@@ -8,9 +8,9 @@ import {
 } from 'react';
 import {
 	createNewTodoList,
-	deleteTodoList,
 	getCollectionData,
-} from '@/helpers';
+	deleteTodoList,
+} from '@/actions';
 import { ITodoCollection } from '@/interfaces';
 import { useTodoContext } from '@/context';
 
@@ -75,9 +75,14 @@ const useTodoList = (
 					const getCollectionResponse = await getCollectionData(
 						currentCollectionData?.id
 					);
+					const { message, error } = getCollectionResponse;
 
-					if (getCollectionResponse) {
-						setCurrentCollectionData(getCollectionResponse);
+					if (error) {
+						throw new Error(error);
+					}
+
+					if (getCollectionResponse && !!JSON.parse(message)) {
+						setCurrentCollectionData(JSON.parse(message));
 					}
 				}
 
@@ -110,8 +115,14 @@ const useTodoList = (
 				currentCollectionData?.id
 			);
 
-			if (getCollectionResponse) {
-				setCurrentCollectionData(getCollectionResponse);
+			const { message, error } = getCollectionResponse;
+
+			if (error) {
+				throw new Error(error);
+			}
+
+			if (getCollectionResponse && !!JSON.parse(message)) {
+				setCurrentCollectionData(JSON.parse(message));
 			}
 		}
 	};

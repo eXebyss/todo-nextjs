@@ -1,5 +1,5 @@
 import { useState, useRef, ChangeEvent, useEffect } from 'react';
-import { createNewTodoItem } from '@/helpers';
+import { createNewTodoItem } from '@/actions';
 import useSWR, { mutate } from 'swr';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -37,12 +37,17 @@ const useTodo = (currentTodoListId: string, todoCollectionId: string) => {
 				setIsTodoLoading(true);
 
 				const createTodoItemResponse = await createNewTodoItem(
-					todoCollectionId,
 					currentTodoListId,
 					text
 				);
 
-				if (createTodoItemResponse) {
+				const { message, error } = createTodoItemResponse;
+
+				if (error) {
+					throw new Error(error);
+				}
+
+				if (!error && message) {
 					mutate(
 						`${baseUrl}/api/v1/todo-collection/${currentTodoListId}`
 					);
@@ -71,12 +76,17 @@ const useTodo = (currentTodoListId: string, todoCollectionId: string) => {
 				setIsTodoLoading(true);
 
 				const createTodoItemResponse = await createNewTodoItem(
-					todoCollectionId,
 					currentTodoListId,
 					text
 				);
 
-				if (createTodoItemResponse) {
+				const { message, error } = createTodoItemResponse;
+
+				if (error) {
+					throw new Error(error);
+				}
+
+				if (!error && message) {
 					mutate(
 						`${baseUrl}/api/v1/todo-collection/${currentTodoListId}`
 					);
