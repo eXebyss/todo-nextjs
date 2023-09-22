@@ -1,27 +1,26 @@
 import { useState, useRef, ChangeEvent, useEffect } from 'react';
-import { createNewTodoItem } from '@/actions';
-import useSWR, { mutate } from 'swr';
+import { useRouter, usePathname } from 'next/navigation';
+import { createNewTodoItem, getTodoListData } from '@/actions';
+import { ITodo } from '@/interfaces';
 
-const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-const useTodo = (currentTodoListId: string, todoCollectionId: string) => {
+const useTodo = (currentTodoListId: string, todoListData: ITodo[]) => {
 	const [openNewTodoItemInput, setOpenNewTodoItemInput] =
 		useState<boolean>(false);
 	const timeoutIdRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const [todoListDataItems, setTodoListDataItems] = useState<ITodo[]>(
+		todoListData || []
+	);
 	const [isTodoLoading, setIsTodoLoading] = useState<boolean>(false);
-	const fetcher = (url: string) => fetch(url).then((res) => res.json());
+	const router = useRouter();
+	const pathname = usePathname();
 
 	const refreshInterval = 60000;
 
-	const {
-		data: todoListData,
-		error,
-		isLoading,
-	} = useSWR(
-		`${baseUrl}/api/v1/todo-collection/${currentTodoListId}`,
-		fetcher,
-		{ refreshInterval: refreshInterval }
-	);
+	useEffect(() => {
+		if (currentTodoListId) {
+			router.push(`${pathname}?q=${currentTodoListId}`);
+		}
+	}, [currentTodoListId, router, pathname]);
 
 	const handleNewTodoItemOnChange = async (
 		e: ChangeEvent<HTMLInputElement>
@@ -43,14 +42,26 @@ const useTodo = (currentTodoListId: string, todoCollectionId: string) => {
 
 				const { message, error } = createTodoItemResponse;
 
-				if (error) {
-					throw new Error(error);
+				if (message) {
+					const getTodoListDataResponse = await getTodoListData(
+						currentTodoListId
+					);
+
+					const { message: todoListData, error: todoListDataError } =
+						getTodoListDataResponse;
+
+					if (todoListDataError) {
+						throw new Error(todoListDataError);
+					}
+
+					const parsedTodoListData = JSON.parse(todoListData);
+
+					parsedTodoListData &&
+						setTodoListDataItems(parsedTodoListData);
 				}
 
-				if (!error && message) {
-					mutate(
-						`${baseUrl}/api/v1/todo-collection/${currentTodoListId}`
-					);
+				if (error) {
+					throw new Error(error);
 				}
 
 				setOpenNewTodoItemInput(false);
@@ -80,16 +91,10 @@ const useTodo = (currentTodoListId: string, todoCollectionId: string) => {
 					text
 				);
 
-				const { message, error } = createTodoItemResponse;
+				const { error } = createTodoItemResponse;
 
 				if (error) {
 					throw new Error(error);
-				}
-
-				if (!error && message) {
-					mutate(
-						`${baseUrl}/api/v1/todo-collection/${currentTodoListId}`
-					);
 				}
 
 				setOpenNewTodoItemInput(false);
@@ -102,11 +107,9 @@ const useTodo = (currentTodoListId: string, todoCollectionId: string) => {
 	};
 
 	return {
-		todoListData,
-		error,
-		isLoading,
 		isTodoLoading,
 		openNewTodoItemInput,
+		todoListDataItems,
 		setOpenNewTodoItemInput,
 		handleNewTodoItemOnChange,
 		handleTodoItemInputOnBlur,

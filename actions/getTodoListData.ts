@@ -5,6 +5,10 @@ import TodoCollection from '@/models/todoCollection';
 
 export default async function getTodoListData(todoListId: string) {
 	try {
+		if (!todoListId) {
+			throw new Error('Missing todo list ID.');
+		}
+
 		await connectMongoDB();
 
 		const todoCollection = await TodoCollection.findOne({
@@ -16,7 +20,10 @@ export default async function getTodoListData(todoListId: string) {
 				(todoList: { id: string }) => todoList.id === todoListId
 			) || [];
 
-		return { message: todoList?.todoCollection || [], error: null };
+		return {
+			message: JSON.stringify(todoList?.todoCollection || []),
+			error: null,
+		};
 	} catch (e) {
 		console.error(e);
 		return {
