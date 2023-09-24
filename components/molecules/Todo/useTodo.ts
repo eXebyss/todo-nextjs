@@ -45,9 +45,8 @@ const useTodo = (currentTodoListId: string, todoListData: ITodo[]) => {
 				}
 
 				if (!error && message) {
-					const getTodoListDataResponse = await getTodoListData(
-						currentTodoListId
-					);
+					const getTodoListDataResponse =
+						await getTodoListData(currentTodoListId);
 
 					const { message: todoListData, error: todoListDataError } =
 						getTodoListDataResponse;
@@ -96,9 +95,8 @@ const useTodo = (currentTodoListId: string, todoListData: ITodo[]) => {
 				}
 
 				if (!error && message) {
-					const getTodoListDataResponse = await getTodoListData(
-						currentTodoListId
-					);
+					const getTodoListDataResponse =
+						await getTodoListData(currentTodoListId);
 
 					const { message: todoListData, error: todoListDataError } =
 						getTodoListDataResponse;

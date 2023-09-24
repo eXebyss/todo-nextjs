@@ -98,3 +98,9 @@ See: [CHANGELOG](https://github.com/eXebyss/todo-nextjs/blob/master/CHANGELOG.md
 -   MDX
 -   MongoDB
 -   Vercel
+
+## Cron Jobs 🤖
+
+Next.js app is configured to handle Cron Jobs running by Vercel.
+
+1. Every empty todo collection is deleted at the end of every saturday.
