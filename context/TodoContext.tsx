@@ -199,8 +199,11 @@ export const TodoContextProvider: FC<ITodoContextProviderProps> = ({
 		const currentTodoCollectionId = localStorage.getItem(
 			'currentTodoCollectionId'
 		);
+		const currentTodoListId = localStorage.getItem('currentTodoListId');
 
-		if (currentTodoCollectionId) {
+		if (pathname === '/' && currentTodoCollectionId && currentTodoListId) {
+			router.push(`/${currentTodoCollectionId}?q=${currentTodoListId}`);
+
 			dispatch({
 				type: 'SET_TODO_COLLECTION_ID',
 				payload: currentTodoCollectionId,

@@ -25,6 +25,7 @@ const Todo = ({
 		setOpenNewTodoItemInput,
 		handleNewTodoItemOnChange,
 		handleTodoItemInputOnBlur,
+		setTodoListDataItems,
 	} = useTodo(currentTodoListId, todoListData);
 
 	const collectionListTodo =
@@ -38,6 +39,7 @@ const Todo = ({
 							done={todo.done}
 							todoCollectionId={todoCollectionId}
 							currentTodoListId={currentTodoListId}
+							setTodoListDataItems={setTodoListDataItems}
 						/>
 					)
 			  )
