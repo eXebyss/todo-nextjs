@@ -6,7 +6,7 @@ _Changelog created using the [Simple Changelog](https://marketplace.visualstudio
 
 ### Changed
 
--   API routes and hadlres are replaced by Next.js Server Actions.
+-   API routes and handlers are replaced by Next.js Server Actions.
 
 ## [1.5.2] - 2023-09-21
 
