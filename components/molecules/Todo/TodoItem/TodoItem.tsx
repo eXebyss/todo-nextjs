@@ -1,20 +1,23 @@
+import { Dispatch, SetStateAction } from 'react';
 import { TrashIcon } from '@/icons';
 import useTodoItem from './useTodoItem';
+import { ITodo } from '@/interfaces';
 
 interface ITodoItemProps {
 	id: string;
 	text: string;
 	done: boolean;
-	todoCollectionId: string;
+	todoCollectionId?: string;
 	currentTodoListId: string;
+	setTodoListDataItems: Dispatch<SetStateAction<ITodo[]>>;
 }
 
 const TodoItem = ({
 	id,
 	text,
 	done,
-	todoCollectionId,
 	currentTodoListId,
+	setTodoListDataItems,
 }: ITodoItemProps) => {
 	const {
 		newTodoText,
@@ -25,7 +28,7 @@ const TodoItem = ({
 		handleUpdateTodoItem,
 		handleUpdateTodoItemOnBlur,
 		handleUpdateTodoItemOnChange,
-	} = useTodoItem(id, text, done, todoCollectionId, currentTodoListId);
+	} = useTodoItem(id, text, done, currentTodoListId, setTodoListDataItems);
 
 	return (
 		<div key={id} className="flex items-center">

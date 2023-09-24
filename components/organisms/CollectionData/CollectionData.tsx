@@ -3,14 +3,16 @@
 import Navbar from '@/components/atoms/Navbar';
 import Todo from '@/components/molecules/Todo';
 import useCollectionData from './useCollectionData';
-import { ITodoCollection } from '@/interfaces';
+import { ITodo, ITodoCollection } from '@/interfaces';
 import TodoList from '@/components/molecules/TodoList';
 import { ELoadingBarSize, LoadingBar } from '@/components/atoms/Loading';
 
 const CollectionData = ({
 	collectionData,
+	todoListData,
 }: {
 	collectionData: ITodoCollection;
+	todoListData: ITodo[];
 }) => {
 	const {
 		currentCollectionData,
@@ -48,6 +50,7 @@ const CollectionData = ({
 						currentTodoListId={currentTodoListId}
 						setSuccessMessage={setSuccessMessage}
 						setCurrentCollectionData={setCurrentCollectionData}
+						todoListData={todoListData}
 					/>
 				</div>
 			</main>

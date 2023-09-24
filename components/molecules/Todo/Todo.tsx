@@ -2,31 +2,35 @@ import { PlusIcon } from '@/icons';
 import { Dispatch, SetStateAction } from 'react';
 import TodoItem from './TodoItem';
 import useTodo from './useTodo';
-import { ITodoCollection } from '@/interfaces';
+import { ITodo, ITodoCollection } from '@/interfaces';
 import { ELoadingBarSize, LoadingBar } from '@/components/atoms/Loading';
 
 interface ITodoProps {
 	todoCollectionId: string;
 	currentTodoListId: string;
+	todoListData: ITodo[];
 	setSuccessMessage: Dispatch<SetStateAction<string>>;
 	setCurrentCollectionData: Dispatch<SetStateAction<ITodoCollection>>;
 }
 
-const Todo = ({ todoCollectionId, currentTodoListId }: ITodoProps) => {
+const Todo = ({
+	todoCollectionId,
+	currentTodoListId,
+	todoListData,
+}: ITodoProps) => {
 	const {
-		todoListData,
-		error,
-		isLoading,
 		isTodoLoading,
 		openNewTodoItemInput,
+		todoListDataItems,
 		setOpenNewTodoItemInput,
 		handleNewTodoItemOnChange,
 		handleTodoItemInputOnBlur,
-	} = useTodo(currentTodoListId, todoCollectionId);
+		setTodoListDataItems,
+	} = useTodo(currentTodoListId, todoListData);
 
 	const collectionListTodo =
-		todoListData && todoListData.length > 0
-			? todoListData?.map(
+		todoListDataItems && todoListDataItems?.length > 0
+			? todoListDataItems?.map(
 					(todo: { id: string; text: string; done: boolean }) => (
 						<TodoItem
 							key={todo.id || todo.text}
@@ -35,6 +39,7 @@ const Todo = ({ todoCollectionId, currentTodoListId }: ITodoProps) => {
 							done={todo.done}
 							todoCollectionId={todoCollectionId}
 							currentTodoListId={currentTodoListId}
+							setTodoListDataItems={setTodoListDataItems}
 						/>
 					)
 			  )
@@ -45,19 +50,14 @@ const Todo = ({ todoCollectionId, currentTodoListId }: ITodoProps) => {
 			<div className="text-center w-full lg:px-12">
 				<h3 className="text-3xl font-bold">TODO: </h3>
 				<div className="grid justify-items-center my-4 gap-y-4">
-					{error && <p className="text-error">Loading data error!</p>}
-					{isLoading && <LoadingBar size={ELoadingBarSize.lg} />}
-					{todoListData && (
+					{todoListDataItems && (
 						<div className="menu w-full rounded-box pb-0">
 							{collectionListTodo}
 						</div>
 					)}
-					{todoListData?.length === 0 && <p>No todo items.</p>}
-					{todoListData?.todoCollection === null && (
+					{todoListDataItems?.length === 0 && <p>No todo items.</p>}
+					{todoListDataItems === null && (
 						<p className="text-warning">Select todo list.</p>
-					)}
-					{todoListData?.message && (
-						<p className="text-error">{todoListData?.message}</p>
 					)}
 
 					{!!currentTodoListId && (

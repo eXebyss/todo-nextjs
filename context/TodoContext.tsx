@@ -11,6 +11,7 @@ import {
 	ReactNode,
 } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { createNewTodoCollection, deleteTodoCollection } from '@/actions';
 
 interface ITodoContextProviderProps {
 	children: ReactNode;
@@ -122,13 +123,15 @@ export const TodoContextProvider: FC<ITodoContextProviderProps> = ({
 		handleSetIsLoading(true);
 
 		try {
-			const res = await fetch('/api/v1/todo-collection', {
-				method: 'POST',
-			});
+			const res = await createNewTodoCollection();
 
-			if (res.status === 201) {
-				const { id } = await res.json();
+			const { message, id, error } = res;
 
+			if (error) {
+				throw new Error(error);
+			}
+
+			if (!error && message && id) {
 				if (id) {
 					dispatch({
 						type: 'SET_TODO_COLLECTION_ID',
@@ -147,7 +150,7 @@ export const TodoContextProvider: FC<ITodoContextProviderProps> = ({
 
 				handleSetIsLoading(false);
 			} else {
-				throw new Error('Error Creating TODO Collection');
+				throw new Error('Error Creating TODO Collection.');
 			}
 		} catch (error) {
 			console.error(error);
@@ -156,14 +159,16 @@ export const TodoContextProvider: FC<ITodoContextProviderProps> = ({
 
 	const handleDeleteTodoCollectionId = useCallback(async () => {
 		try {
-			const res = await fetch(
-				`/api/v1/todo-collection?todoCollectionId=${state.currentTodoCollectionId}`,
-				{
-					method: 'DELETE',
-				}
+			const res = await deleteTodoCollection(
+				state.currentTodoCollectionId
 			);
+			const { message, error } = res;
 
-			if (res.status === 200) {
+			if (error) {
+				throw new Error(error);
+			}
+
+			if (!error && message) {
 				localStorage.removeItem('currentTodoListId');
 
 				localStorage.removeItem('currentTodoCollectionId');
@@ -175,7 +180,7 @@ export const TodoContextProvider: FC<ITodoContextProviderProps> = ({
 					payload: '',
 				});
 			} else {
-				throw new Error('Error Deleting TODO Collection');
+				throw new Error('Error Deleting TODO Collection.');
 			}
 		} catch (error) {
 			console.error(error);
@@ -194,8 +199,11 @@ export const TodoContextProvider: FC<ITodoContextProviderProps> = ({
 		const currentTodoCollectionId = localStorage.getItem(
 			'currentTodoCollectionId'
 		);
+		const currentTodoListId = localStorage.getItem('currentTodoListId');
 
-		if (currentTodoCollectionId) {
+		if (pathname === '/' && currentTodoCollectionId && currentTodoListId) {
+			router.push(`/${currentTodoCollectionId}?q=${currentTodoListId}`);
+
 			dispatch({
 				type: 'SET_TODO_COLLECTION_ID',
 				payload: currentTodoCollectionId,

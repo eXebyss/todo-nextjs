@@ -1,15 +1,13 @@
-import { useState, useRef, ChangeEvent } from 'react';
-import { mutate } from 'swr';
-import { deleteTodoItem, updateTodoItem } from '@/helpers';
-
-const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+import { useState, useRef, ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { deleteTodoItem, getTodoListData, updateTodoItem } from '@/actions';
+import { ITodo } from '@/interfaces';
 
 const useTodoItem = (
 	id: string,
 	text: string,
 	done: boolean,
-	todoCollectionId: string,
-	currentTodoListId: string
+	currentTodoListId: string,
+	setTodoListDataItems: Dispatch<SetStateAction<ITodo[]>>
 ) => {
 	const [isInputOpen, setIsInputOpen] = useState<boolean>(false);
 	const [newTodoText, setNewTodoText] = useState<string>(text || '');
@@ -17,14 +15,28 @@ const useTodoItem = (
 	const timeoutIdRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	const handleDeleteTodoItem = async () => {
-		const deleteTodoResponse = await deleteTodoItem(
-			todoCollectionId,
-			currentTodoListId,
-			id
-		);
+		const deleteTodoResponse = await deleteTodoItem(currentTodoListId, id);
 
-		if (deleteTodoResponse) {
-			mutate(`${baseUrl}/api/v1/todo-collection/${currentTodoListId}`);
+		const { message, error } = deleteTodoResponse;
+
+		if (error) {
+			throw new Error(error);
+		}
+
+		if (!error && message) {
+			const getTodoListDataResponse =
+				await getTodoListData(currentTodoListId);
+
+			const { message: todoListData, error: todoListDataError } =
+				getTodoListDataResponse;
+
+			if (todoListDataError) {
+				throw new Error(todoListDataError);
+			}
+
+			const parsedTodoListData = JSON.parse(todoListData);
+
+			parsedTodoListData && setTodoListDataItems(parsedTodoListData);
 		}
 	};
 
@@ -32,15 +44,32 @@ const useTodoItem = (
 		setIsChecked(!isChecked);
 
 		const updateTodoResponse = await updateTodoItem(
-			todoCollectionId,
 			currentTodoListId,
 			id,
 			newTodoText || text,
 			!isChecked
 		);
 
-		if (updateTodoResponse) {
-			mutate(`${baseUrl}/api/v1/todo-collection/${currentTodoListId}`);
+		const { message, error } = updateTodoResponse;
+
+		if (error) {
+			throw new Error(error);
+		}
+
+		if (!error && message) {
+			const getTodoListDataResponse =
+				await getTodoListData(currentTodoListId);
+
+			const { message: todoListData, error: todoListDataError } =
+				getTodoListDataResponse;
+
+			if (todoListDataError) {
+				throw new Error(todoListDataError);
+			}
+
+			const parsedTodoListData = JSON.parse(todoListData);
+
+			parsedTodoListData && setTodoListDataItems(parsedTodoListData);
 		}
 	};
 
@@ -58,16 +87,32 @@ const useTodoItem = (
 		if (text.length > 0) {
 			timeoutIdRef.current = setTimeout(async () => {
 				const updateTodoResponse = await updateTodoItem(
-					todoCollectionId,
 					currentTodoListId,
 					id,
 					text
 				);
 
-				if (updateTodoResponse) {
-					mutate(
-						`${baseUrl}/api/v1/todo-collection/${currentTodoListId}`
-					);
+				const { message, error } = updateTodoResponse;
+
+				if (error) {
+					throw new Error(error);
+				}
+
+				if (!error && message) {
+					const getTodoListDataResponse =
+						await getTodoListData(currentTodoListId);
+
+					const { message: todoListData, error: todoListDataError } =
+						getTodoListDataResponse;
+
+					if (todoListDataError) {
+						throw new Error(todoListDataError);
+					}
+
+					const parsedTodoListData = JSON.parse(todoListData);
+
+					parsedTodoListData &&
+						setTodoListDataItems(parsedTodoListData);
 				}
 
 				setIsInputOpen(false);
@@ -85,16 +130,32 @@ const useTodoItem = (
 		if (newTodoText.length > 0) {
 			timeoutIdRef.current = setTimeout(async () => {
 				const updateTodoResponse = await updateTodoItem(
-					todoCollectionId,
 					currentTodoListId,
 					id,
 					newTodoText
 				);
 
-				if (updateTodoResponse) {
-					mutate(
-						`${baseUrl}/api/v1/todo-collection/${currentTodoListId}`
-					);
+				const { message, error } = updateTodoResponse;
+
+				if (error) {
+					throw new Error(error);
+				}
+
+				if (!error && message) {
+					const getTodoListDataResponse =
+						await getTodoListData(currentTodoListId);
+
+					const { message: todoListData, error: todoListDataError } =
+						getTodoListDataResponse;
+
+					if (todoListDataError) {
+						throw new Error(todoListDataError);
+					}
+
+					const parsedTodoListData = JSON.parse(todoListData);
+
+					parsedTodoListData &&
+						setTodoListDataItems(parsedTodoListData);
 				}
 
 				setIsInputOpen(false);
