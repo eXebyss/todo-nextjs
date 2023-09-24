@@ -8,7 +8,7 @@ import { ELoadingBarSize, LoadingBar } from '@/components/atoms/Loading';
 interface ITodoProps {
 	todoCollectionId: string;
 	currentTodoListId: string;
-	todoListData: ITodo[];
+	todoListData: ITodo[] | null;
 	setSuccessMessage: Dispatch<SetStateAction<string>>;
 	setCurrentCollectionData: Dispatch<SetStateAction<ITodoCollection>>;
 }

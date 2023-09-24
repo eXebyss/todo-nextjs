@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+	@apply text-base lg:text-lg;
+}
+
+p,
+a {
+	@apply lg:text-base;
+}

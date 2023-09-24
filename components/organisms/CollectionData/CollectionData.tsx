@@ -12,7 +12,7 @@ const CollectionData = ({
 	todoListData,
 }: {
 	collectionData: ITodoCollection;
-	todoListData: ITodo[];
+	todoListData?: ITodo[];
 }) => {
 	const {
 		currentCollectionData,
@@ -50,7 +50,7 @@ const CollectionData = ({
 						currentTodoListId={currentTodoListId}
 						setSuccessMessage={setSuccessMessage}
 						setCurrentCollectionData={setCurrentCollectionData}
-						todoListData={todoListData}
+						todoListData={todoListData || null}
 					/>
 				</div>
 			</main>

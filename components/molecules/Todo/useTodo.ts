@@ -3,7 +3,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { createNewTodoItem, getTodoListData } from '@/actions';
 import { ITodo } from '@/interfaces';
 
-const useTodo = (currentTodoListId: string, todoListData: ITodo[]) => {
+const useTodo = (currentTodoListId: string, todoListData: ITodo[] | null) => {
 	const [openNewTodoItemInput, setOpenNewTodoItemInput] =
 		useState<boolean>(false);
 	const timeoutIdRef = useRef<ReturnType<typeof setTimeout> | null>(null);

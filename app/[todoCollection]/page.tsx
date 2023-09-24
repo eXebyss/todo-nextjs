@@ -23,31 +23,35 @@ export default async function TodoCollection({
 
 		const todoListId = searchParams.q;
 
-		const todoListDataResponse = await getTodoListData(todoListId);
+		if (todoListId) {
+			const todoListDataResponse = await getTodoListData(todoListId);
 
-		const { message: todoListData, error: todoListDataError } =
-			todoListDataResponse;
+			const { message: todoListData, error: todoListDataError } =
+				todoListDataResponse;
 
-		if (todoListDataError) {
-			throw new Error(todoListDataError);
+			if (todoListDataError) {
+				throw new Error(todoListDataError);
+			}
+
+			const parsedTodoListData = JSON.parse(todoListData);
+
+			return (
+				<CollectionData
+					collectionData={parsedCollectionData}
+					todoListData={parsedTodoListData}
+				/>
+			);
 		}
 
-		const parsedTodoListData = JSON.parse(todoListData);
-
-		return (
-			<CollectionData
-				collectionData={parsedCollectionData}
-				todoListData={parsedTodoListData}
-			/>
-		);
+		return <CollectionData collectionData={parsedCollectionData} />;
 	} catch (e) {
 		console.error(e);
 
 		return (
 			<main>
-				<p className="w-full my-4 text-center text-error">
+				<h1 className="w-full my-4 text-center text-error">
 					Render Error!
-				</p>
+				</h1>
 			</main>
 		);
 	}
