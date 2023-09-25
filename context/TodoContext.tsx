@@ -98,26 +98,32 @@ export const TodoContextProvider: FC<ITodoContextProviderProps> = ({
 
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	const handleIsTodoCollectionExisting = (state: boolean | null) => {
-		dispatch({
-			type: 'IS_TODO_COLLECTION_EXISTING',
-			payload: state,
-		});
-	};
+	const handleIsTodoCollectionExisting = useCallback(
+		(state: boolean | null) => {
+			dispatch({
+				type: 'IS_TODO_COLLECTION_EXISTING',
+				payload: state,
+			});
+		},
+		[]
+	);
 
-	const handleSetIsLoading = (state: boolean) => {
+	const handleSetIsLoading = useCallback((state: boolean) => {
 		dispatch({
 			type: 'IS_LOADING',
 			payload: state,
 		});
-	};
+	}, []);
 
-	const handleEnterTodoCollectionId = (todoCollectionId: string) => {
-		dispatch({
-			type: 'SET_TODO_COLLECTION_ID',
-			payload: todoCollectionId,
-		});
-	};
+	const handleEnterTodoCollectionId = useCallback(
+		(todoCollectionId: string) => {
+			dispatch({
+				type: 'SET_TODO_COLLECTION_ID',
+				payload: todoCollectionId,
+			});
+		},
+		[]
+	);
 
 	const handleCreateTodoCollectionId = useCallback(async () => {
 		handleSetIsLoading(true);
@@ -142,20 +148,13 @@ export const TodoContextProvider: FC<ITodoContextProviderProps> = ({
 
 					router.push(`/${id}`);
 				}
-
-				dispatch({
-					type: 'IS_TODO_COLLECTION_EXISTING',
-					payload: null,
-				});
-
-				handleSetIsLoading(false);
 			} else {
 				throw new Error('Error Creating TODO Collection.');
 			}
 		} catch (error) {
 			console.error(error);
 		}
-	}, [dispatch, router]);
+	}, [dispatch, router, handleSetIsLoading]);
 
 	const handleDeleteTodoCollectionId = useCallback(async () => {
 		try {
@@ -236,6 +235,9 @@ export const TodoContextProvider: FC<ITodoContextProviderProps> = ({
 		handleCreateTodoCollectionId,
 		handleDeleteTodoCollectionId,
 		handleTodoCollectionDataUpdated,
+		handleIsTodoCollectionExisting,
+		handleSetIsLoading,
+		handleEnterTodoCollectionId,
 	]);
 
 	return (
