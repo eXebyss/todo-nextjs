@@ -1,6 +1,10 @@
 import { useState, useRef, ChangeEvent, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { createNewTodoItem, getTodoListData } from '@/actions';
+import {
+	createNewTodoItem,
+	getTodoListData,
+	deleteAllTodoItems,
+} from '@/actions';
 import { ITodo } from '@/interfaces';
 
 const useTodo = (currentTodoListId: string, todoListData: ITodo[] | null) => {
@@ -120,6 +124,24 @@ const useTodo = (currentTodoListId: string, todoListData: ITodo[] | null) => {
 		return;
 	};
 
+	const handleDeleteAllTodoItems = async () => {
+		deleteAllTodoItems(currentTodoListId);
+
+		const getTodoListDataResponse =
+			await getTodoListData(currentTodoListId);
+
+		const { message: todoListData, error: todoListDataError } =
+			getTodoListDataResponse;
+
+		if (todoListDataError) {
+			throw new Error(todoListDataError);
+		}
+
+		const parsedTodoListData = JSON.parse(todoListData);
+
+		parsedTodoListData && setTodoListDataItems(parsedTodoListData);
+	};
+
 	return {
 		isTodoLoading,
 		openNewTodoItemInput,
@@ -128,6 +150,7 @@ const useTodo = (currentTodoListId: string, todoListData: ITodo[] | null) => {
 		handleNewTodoItemOnChange,
 		handleTodoItemInputOnBlur,
 		setTodoListDataItems,
+		handleDeleteAllTodoItems,
 	};
 };
 

@@ -7,3 +7,4 @@ export { default as createNewTodoItem } from './createNewTodoItem';
 export { default as getTodoListData } from './getTodoListData';
 export { default as deleteTodoItem } from './deleteTodoItem';
 export { default as updateTodoItem } from './updateTodoItem';
+export { default as deleteAllTodoItems } from './deleteAllTodoItems';

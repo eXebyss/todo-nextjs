@@ -3,10 +3,7 @@
 import { connectMongoDB } from '@/libs/mongodb';
 import TodoCollection from '@/models/todoCollection';
 
-export default async function deleteTodoItem(
-	todoListId: string,
-	todoId: string
-) {
+export default async function deleteDoneTodoItems(todoListId: string) {
 	try {
 		await connectMongoDB();
 
@@ -16,9 +13,9 @@ export default async function deleteTodoItem(
 		const todoList = todoCollection?.todoLists.find(
 			(todoList: { id: string }) => todoList.id === todoListId
 		);
+
 		todoList.todoCollection = todoList?.todoCollection?.filter(
-			(todo: { id: string; done: boolean }) =>
-				todo.id !== todoId && !todo.done
+			(todo: { id: string; done: boolean }) => !todo.done
 		);
 
 		todoList.updatedAt = Date.now();
@@ -26,12 +23,12 @@ export default async function deleteTodoItem(
 
 		await todoCollection.save();
 
-		return { message: 'TODO item is deleted.', error: null };
+		return { message: 'All done TODO items are deleted.', error: null };
 	} catch (error) {
 		console.error(error);
 
 		return {
-			message: 'Error deleting TODO item.',
+			message: 'Error deleting all done TODO items.',
 			error: `Error: ${error}`,
 		};
 	}
