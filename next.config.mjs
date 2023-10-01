@@ -12,7 +12,6 @@ const withMDX = nextMDX({
 const nextConfig = {
 	pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 	experimental: {
-		appDir: true,
 		mdxRs: true,
 		serverActions: true,
 	},
