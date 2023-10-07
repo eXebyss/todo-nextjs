@@ -96,7 +96,8 @@ See: [CHANGELOG](https://github.com/eXebyss/todo-nextjs/blob/master/CHANGELOG.md
 -   Tailwind CSS
 -   SWR
 -   MDX
--   MongoDB
+-   MongoDB (optional)
+-   Vercel KV Database (optional)
 -   Vercel
 
 ## Cron Jobs 🤖

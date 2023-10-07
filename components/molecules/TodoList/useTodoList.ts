@@ -106,7 +106,10 @@ const useTodoList = (
 	};
 
 	const handleDeleteTodoList = async (todoListId: string) => {
-		const deleteListResponse = await deleteTodoList(todoListId);
+		const deleteListResponse = await deleteTodoList(
+			todoListId,
+			currentCollectionData?.id
+		);
 
 		if (deleteListResponse) {
 			setSuccessMessage('List deleted');

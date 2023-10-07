@@ -2,6 +2,12 @@
 
 _Changelog created using the [Simple Changelog](https://marketplace.visualstudio.com/items?itemName=tobiaswaelde.vscode-simple-changelog) extension for VS Code._
 
+## [1.8.0] - 2023-10-07
+
+### Added
+
+-   Add Vercel KV.
+
 ## [1.7.0] - 2023-09-25
 
 ### Added

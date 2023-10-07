@@ -24,7 +24,10 @@ export default async function TodoCollection({
 		const todoListId = searchParams.q;
 
 		if (todoListId) {
-			const todoListDataResponse = await getTodoListData(todoListId);
+			const todoListDataResponse = await getTodoListData(
+				todoListId,
+				params.todoCollection
+			);
 
 			const { message: todoListData, error: todoListDataError } =
 				todoListDataResponse;

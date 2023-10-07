@@ -28,7 +28,7 @@ const Todo = ({
 		handleTodoItemInputOnBlur,
 		setTodoListDataItems,
 		handleDeleteAllTodoItems,
-	} = useTodo(currentTodoListId, todoListData);
+	} = useTodo(currentTodoListId, todoListData, todoCollectionId);
 
 	const collectionListTodo =
 		todoListDataItems && todoListDataItems?.length > 0

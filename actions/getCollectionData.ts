@@ -3,17 +3,28 @@
 import { connectMongoDB } from '@/libs/mongodb';
 import TodoCollection from '@/models/todoCollection';
 import { ITodoCollection } from '@/interfaces';
+import { kv } from '@vercel/kv';
 
 export default async function getCollectionData(todoCollectionId: string) {
 	try {
-		await connectMongoDB();
+		if (process.env.USE_MONGODB === 'true') {
+			await connectMongoDB();
 
-		const todoCollection: ITodoCollection | null =
-			await TodoCollection.findOne({
-				id: todoCollectionId,
-			});
+			const todoCollection: ITodoCollection | null =
+				await TodoCollection.findOne({
+					id: todoCollectionId,
+				});
 
-		return { message: JSON.stringify(todoCollection), error: null };
+			return { message: JSON.stringify(todoCollection), error: null };
+		}
+
+		if (process.env.USE_VERCEL_KV === 'true') {
+			const todoCollection = await kv.get(todoCollectionId);
+
+			return { message: JSON.stringify(todoCollection), error: null };
+		}
+
+		throw new Error('No Storage Provider Specified.');
 	} catch (e) {
 		console.error(e);
 		return {

@@ -16,8 +16,9 @@ const TodoItem = ({
 	id,
 	text,
 	done,
-	currentTodoListId,
+	todoCollectionId,
 	setTodoListDataItems,
+	currentTodoListId,
 }: ITodoItemProps) => {
 	const {
 		newTodoText,
@@ -28,7 +29,14 @@ const TodoItem = ({
 		handleUpdateTodoItem,
 		handleUpdateTodoItemOnBlur,
 		handleUpdateTodoItemOnChange,
-	} = useTodoItem(id, text, done, currentTodoListId, setTodoListDataItems);
+	} = useTodoItem(
+		id,
+		text,
+		done,
+		currentTodoListId,
+		setTodoListDataItems,
+		todoCollectionId
+	);
 
 	return (
 		<div key={id} className="flex items-center">

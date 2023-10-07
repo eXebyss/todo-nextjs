@@ -7,7 +7,8 @@ const useTodoItem = (
 	text: string,
 	done: boolean,
 	currentTodoListId: string,
-	setTodoListDataItems: Dispatch<SetStateAction<ITodo[]>>
+	setTodoListDataItems: Dispatch<SetStateAction<ITodo[]>>,
+	todoCollectionId?: string
 ) => {
 	const [isInputOpen, setIsInputOpen] = useState<boolean>(false);
 	const [newTodoText, setNewTodoText] = useState<string>(text || '');
@@ -15,7 +16,9 @@ const useTodoItem = (
 	const timeoutIdRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	const handleDeleteTodoItem = async () => {
-		const deleteTodoResponse = await deleteTodoItem(currentTodoListId, id);
+		const deleteTodoResponse = todoCollectionId
+			? await deleteTodoItem(currentTodoListId, id, todoCollectionId)
+			: await deleteTodoItem(currentTodoListId, id);
 
 		const { message, error } = deleteTodoResponse;
 
@@ -24,8 +27,9 @@ const useTodoItem = (
 		}
 
 		if (!error && message) {
-			const getTodoListDataResponse =
-				await getTodoListData(currentTodoListId);
+			const getTodoListDataResponse = todoCollectionId
+				? await getTodoListData(currentTodoListId, todoCollectionId)
+				: await getTodoListData(currentTodoListId);
 
 			const { message: todoListData, error: todoListDataError } =
 				getTodoListDataResponse;
@@ -43,12 +47,16 @@ const useTodoItem = (
 	const handleUpdateTodoItem = async () => {
 		setIsChecked(!isChecked);
 
-		const updateTodoResponse = await updateTodoItem(
-			currentTodoListId,
-			id,
-			newTodoText || text,
-			!isChecked
-		);
+		const updateTodoResponse = todoCollectionId
+			? await updateTodoItem(currentTodoListId, id, {
+					todoText: newTodoText || text,
+					todoDone: !isChecked,
+					todoCollectionId: todoCollectionId,
+			  })
+			: await updateTodoItem(currentTodoListId, id, {
+					todoText: newTodoText || text,
+					todoDone: !isChecked,
+			  });
 
 		const { message, error } = updateTodoResponse;
 
@@ -57,8 +65,9 @@ const useTodoItem = (
 		}
 
 		if (!error && message) {
-			const getTodoListDataResponse =
-				await getTodoListData(currentTodoListId);
+			const getTodoListDataResponse = todoCollectionId
+				? await getTodoListData(currentTodoListId, todoCollectionId)
+				: await getTodoListData(currentTodoListId);
 
 			const { message: todoListData, error: todoListDataError } =
 				getTodoListDataResponse;
@@ -86,11 +95,14 @@ const useTodoItem = (
 
 		if (text.length > 0) {
 			timeoutIdRef.current = setTimeout(async () => {
-				const updateTodoResponse = await updateTodoItem(
-					currentTodoListId,
-					id,
-					text
-				);
+				const updateTodoResponse = todoCollectionId
+					? await updateTodoItem(currentTodoListId, id, {
+							todoText: text,
+							todoCollectionId,
+					  })
+					: await updateTodoItem(currentTodoListId, id, {
+							todoText: text,
+					  });
 
 				const { message, error } = updateTodoResponse;
 
@@ -99,8 +111,12 @@ const useTodoItem = (
 				}
 
 				if (!error && message) {
-					const getTodoListDataResponse =
-						await getTodoListData(currentTodoListId);
+					const getTodoListDataResponse = todoCollectionId
+						? await getTodoListData(
+								currentTodoListId,
+								todoCollectionId
+						  )
+						: await getTodoListData(currentTodoListId);
 
 					const { message: todoListData, error: todoListDataError } =
 						getTodoListDataResponse;
@@ -132,7 +148,7 @@ const useTodoItem = (
 				const updateTodoResponse = await updateTodoItem(
 					currentTodoListId,
 					id,
-					newTodoText
+					{ todoText: newTodoText }
 				);
 
 				const { message, error } = updateTodoResponse;
