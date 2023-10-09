@@ -16,6 +16,14 @@ export async function GET() {
 
 			collection.todoLists = filteredTodoLists;
 
+			// Check if updatedAt is more than a month ago
+			const oneMonthAgo = new Date();
+			oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+
+			if (new Date(collection.updatedAt) < oneMonthAgo) {
+				return true;
+			}
+
 			return collection.todoLists.length === 0;
 		});
 
