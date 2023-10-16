@@ -28,6 +28,12 @@ const useTodo = (
 		}
 	}, [currentTodoListId, router, pathname]);
 
+	useEffect(() => {
+		if (todoListData) {
+			setTodoListDataItems(todoListData);
+		}
+	}, [todoListData]);
+
 	const handleNewTodoItemOnChange = async (
 		e: ChangeEvent<HTMLInputElement>
 	) => {
